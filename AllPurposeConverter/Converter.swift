@@ -98,7 +98,15 @@ class Converter {
         return ratio
     }
     
-    func calculation(enteredNumber: Double) -> String {
-        return "\(enteredNumber * ratio)"
+    func calculation<T: Numeric>(enteredNumber: T, ratio: T) -> T {
+        return enteredNumber * ratio
     }
 }
+
+protocol Numeric {
+    static func *(enteredNumber: Self, ratio: Self) -> Self
+}
+
+extension Double: Numeric{}
+
+
